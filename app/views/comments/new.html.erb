@@ -1,0 +1,8 @@
+<%= form_with model: @comment, local: true do |f| %>
+
+  <%= f.label :body, 'Napisz komentarz' %>
+  <%= f.text_field :body %>
+
+  <%= f.submit 'Wyślij komentarz' %>
+
+<% end %>

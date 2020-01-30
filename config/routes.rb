@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :boards
   resources :lists
   resources :todopoints
+  resources :comments
 end
