@@ -1,0 +1,9 @@
+<% @boards.each do |board| %>
+  <%= link_to board_path(board) do %>
+    <%= board.title %>
+  <% end %>
+    <%= link_to "Usuń", board_path(board), method: :delete, data: { confirm: 'Jesteś pewny, że chcesz usunąć ten BOARD?'} %>
+    <%= link_to "Edytuj", edit_board_path(board) %>
+  <% end %>
+
+  <%= link_to '< WRÓĆ', root_path %>

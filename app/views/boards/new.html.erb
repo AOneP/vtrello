@@ -1,0 +1,21 @@
+<div class="">
+  <%= form_with model: @board, local: true do |f| %>
+
+    <%= f.label :title, 'Tytuł' %>
+    <%= f.text_field :title %>
+
+    <%= f.label :describe, 'Opis' %>
+    <%= f.text_field :describe %>
+
+    <%= f.select :background_color, options_for_select([['Select...', nil], 'red', 'black', 'blue']) %>
+
+    <%= f.submit "Stwórz board" %>
+
+  <% end %>
+
+</div>
+
+
+<div class="">
+  <%= link_to ' < Wszystkie boards', boards_path  %>
+</div>
