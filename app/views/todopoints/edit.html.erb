@@ -1,0 +1,14 @@
+<%= form_with model: @todopoint, local: true do |f| %>
+
+  <%= f.label :title, 'Tytuł' %>
+  <%= f.text_field :title, value: @todopoint.title %><br>
+
+  <%= f.label :todo_type, 'Typ:' %>
+  <%= f.select :todo_type, options_for_select([['Wybierz typ...', nil], 'bug', 'story', 'done'], selected: @todopoint.todo_type) %>
+
+  <%= f.label :done, 'Wykonane?' %>
+  <%= f.select :done, options_for_select([['Wykonane...?', nil], ['Tak', true], ['Nie', false]], selected: @todopoint.done) %>
+
+  <%= f.submit "Aktualizuj Board" %>
+
+<% end %>

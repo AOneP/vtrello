@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'boards#index'
   resources :boards
   resources :lists
+  resources :todopoints
 end

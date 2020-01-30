@@ -1,0 +1,8 @@
+<% @todopoints.each do |todopoint| %>
+
+  <%= todopoint.title %>
+  <%= todopoint.todo_type %>
+  <%= link_to 'Edytuj', edit_todopoint_path(todopoint) %>
+  <%= link_to 'Usuń', todopoint_path(todopoint), method: :delete, data: {confirm: 'Czy na pewno chcesz usunąć Todopoint?'} %>
+  
+<% end %>

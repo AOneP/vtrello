@@ -1,0 +1,11 @@
+<%= form_with model: @todopoint do |f| %>
+
+  <%= f.label :title, 'Dodaj zadanie' %>
+  <%= f.text_field :title %>
+
+  <%= f.label :todopoint, 'Typ:' %>
+  <%= f.select :todo_type, options_for_select([['Wybierz typ...', nil], 'bug', 'story', 'done']) %>
+
+  <%= f.submit 'Stwórz ToDoPoint' %>
+  
+<% end %>
