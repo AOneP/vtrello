@@ -13,8 +13,9 @@ class ListsController < ApplicationController
   end
 
   def create
-    list = List.create(list_params)
-    if list.save
+    @board = Board.find(params[:board_id])
+    @list = @board.lists.new(list_params)
+    if @list.save
       redirect_to boards_path, notice: 'Stworzyłeś nową listę'
     else
       render :new
@@ -39,7 +40,7 @@ class ListsController < ApplicationController
       redirect_to lists_path, notice: 'Usunąłeś listę'
     else
       render :index
-    end 
+    end
   end
 
   private

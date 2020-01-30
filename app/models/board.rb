@@ -1,6 +1,7 @@
 class Board < ApplicationRecord
   before_create :set_default_background_color
 
+  has_many :lists
   enum background_color: { red: 0, blue: 10, black: 20 }
 
   private

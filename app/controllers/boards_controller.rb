@@ -10,6 +10,7 @@ class BoardsController < ApplicationController
 
   def show
     board
+    @list = board.lists.new
   end
 
   def create
