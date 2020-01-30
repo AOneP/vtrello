@@ -1,0 +1,2 @@
+class Todopoint < ApplicationRecord
+end 
