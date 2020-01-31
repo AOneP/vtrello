@@ -1,0 +1,13 @@
+<%= form_with model: @board, local: true do |f| %>
+
+  <%= f.label :title, 'Tytuł' %>
+  <%= f.text_field :title, value: @board.title %><br>
+
+  <%= f.label :describe, 'Opis' %>
+  <%= f.text_field :describe, value: @board.describe %><br>
+
+  <%= f.select :background_color, options_for_select(Board.background_colors.map { |key, value| [key.capitalize, key] }) %>
+
+  <%= f.submit (@board.new_record? ? 'Stwórz nowy board' : 'Aktualizuj board') %>
+
+<% end %>
