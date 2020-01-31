@@ -29,8 +29,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+pl:
+  hello: "Hej świecie"
   boards:
     notifications:
-      create: 'Board succesfully created'
+      create: 'Stworzyłeś nowy board!'

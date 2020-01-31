@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to boards_path, notice: 'Stworzyłeś nowy board!'
+      redirect_to boards_path, notice: I18n.t('boards.notifications.create')
     else
       render :new
     end
