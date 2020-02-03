@@ -1,0 +1,11 @@
+<%= form_with model: @list do |f| %>
+
+  <%= f.label :title, 'Nazwa listy' %>
+  <%= f.text_field :title, value: @list.title %>
+
+  <%= f.label :done, 'Zrealizowany?' %>
+  <%= f.text_field :done %>
+
+  <%= f.submit "Edytuj listę" %>
+
+<% end %>
