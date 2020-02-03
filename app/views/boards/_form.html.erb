@@ -6,7 +6,7 @@
   <%= f.label :describe, 'Opis' %>
   <%= f.text_field :describe, value: @board.describe %><br>
 
-  <%= f.select :background_color, options_for_select([['Select...', nil], 'red', 'black', 'blue']) %>
+  <%= f.select :background_color, options_for_select([['Select...', nil], ['red', 0], ['black', 1], ['blue', 2]], @board.background_color) %>
 
   <%= f.submit (@board.new_record? ? 'Stwórz nowy board' : 'Aktualizuj board') %>
 
