@@ -38,4 +38,4 @@ pl:
       destroy: 'Usunąłeś board!'
       wrong: 'Coś poszło nie tak...'
   locales:
-    show: 'Language changed!'
+    show: "Zmieniłeś na język %{new_language}"

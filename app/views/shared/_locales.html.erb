@@ -1,2 +1,7 @@
-<%= link_to 'PL', locale_path(locale: 'pl') %>
-<%= link_to 'EN', locale_path(locale: 'en') %>
+<% if cookies[:locale] != 'pl' %>
+  <%=  link_to 'PL', locale_path(locale: 'pl') %>
+<% end %>
+
+<% if cookies[:locale] != 'en' %>
+  <%= link_to 'EN', locale_path(locale: 'en') %>
+<% end %>
