@@ -37,6 +37,7 @@ pl:
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
       wrong: 'Coś poszło nie tak...'
+
   lists:
     notifications:
       create: 'Stworzyłeś nową listę!'

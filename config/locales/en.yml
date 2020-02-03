@@ -36,11 +36,12 @@ en:
       create: 'Board succesfully created'
       update: 'Board updated'
       destroy: 'Board destroyed'
-    wrong: 'Something goes wrong...'
+      wrong: 'Something goes wrong...'
   lists:
     notifications:
-      create: 'List created'
+      create: 'List create'
       update: 'List updated'
       destroy: 'List destroyed'    
+      wrong: 'Something goes wrong...'
   locales:
     show: "Language changed to %{new_language}"
