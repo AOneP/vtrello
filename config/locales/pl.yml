@@ -34,3 +34,8 @@ pl:
   boards:
     notifications:
       create: 'Stworzyłeś nowy board!'
+      update: 'Aktualizowałeś board!'
+      destroy: 'Usunąłeś board!'
+      wrong: 'Coś poszło nie tak...'
+  locales:
+    show: 'Language changed!'

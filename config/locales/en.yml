@@ -34,3 +34,8 @@ en:
   boards:
     notifications:
       create: 'Board succesfully created'
+      update: 'Board updated'
+      destroy: 'Board destroyed'
+      wrong: 'Something goes wrong...'
+  locales:
+    show: 'Zmieniłeś język!'

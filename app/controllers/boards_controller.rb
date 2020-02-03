@@ -28,7 +28,7 @@ class BoardsController < ApplicationController
 
   def update
     if board.update(board_params)
-      redirect_to boards_path, notice: 'Board aktualizowany'
+      redirect_to boards_path, notice: I18n.t('boards.notifications.update')
     else
       render :edit
     end
@@ -36,9 +36,9 @@ class BoardsController < ApplicationController
 
   def destroy
     if board.destroy
-      redirect_to boards_path, notice: 'Usunąłeś board!'
+      redirect_to boards_path, notice: I18n.t('boards.notifications.destroy')
     else
-      redirect_to boards_path, alert: 'Coś poszło źle!'
+      redirect_to boards_path, alert: I18n.t('boards.notifications.wrong')
     end
   end
 

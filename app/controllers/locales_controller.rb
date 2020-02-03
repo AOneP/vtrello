@@ -3,7 +3,7 @@ class LocalesController < ApplicationController
 
   def show
     cookies['locale'] = params[:locale]
-    redirect_to root_path, notice: 'Zmieniłeś język'
+    redirect_to root_path, notice: I18n.t('locales.show')
   end
 
 end
