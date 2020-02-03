@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'boards#index'
   resources :boards
   resources :lists
+  resources :locales, only: [:show], param: :locale
+
 end

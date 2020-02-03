@@ -29,13 +29,13 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+pl:
+  hello: "Hej świecie"
   boards:
     notifications:
-      create: 'Board succesfully created'
-      update: 'Board updated'
-      destroy: 'Board destroyed'
-      wrong: 'Something goes wrong...'
+      create: 'Stworzyłeś nowy board!'
+      update: 'Aktualizowałeś board!'
+      destroy: 'Usunąłeś board!'
+      wrong: 'Coś poszło nie tak...'
   locales:
-    show: "Language changed to %{new_language}"
+    show: "Zmieniłeś na język %{new_language}"

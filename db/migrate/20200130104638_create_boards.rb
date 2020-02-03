@@ -4,7 +4,7 @@ class CreateBoards < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :describe
       t.boolean :archived, default: false
-      t.integer :background_color
+      t.integer :background_color, default: 0
 
       t.timestamps
     end
