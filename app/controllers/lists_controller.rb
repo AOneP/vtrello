@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   def create
     list = List.create(list_params)
     if list.save
-      redirect_to boards_path, notice: 'Stworzyłeś nową listę'
+      redirect_to boards_path, notice: I18n.t('lists.notifications.create')
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ListsController < ApplicationController
   def update
     list
     if list.update(list_params)
-      redirect_to boards_path, notice: 'Lista aktualizowana'
+      redirect_to boards_path, notice: I18n.t('lists.notifications.update')
     else
       render :edit
     end
@@ -36,10 +36,10 @@ class ListsController < ApplicationController
 
   def destroy
     if list.destroy
-      redirect_to lists_path, notice: 'Usunąłeś listę'
+      redirect_to lists_path, notice: I18n.t('lists.notifications.destroy')
     else
       render :index
-    end 
+    end
   end
 
   private

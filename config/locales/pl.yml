@@ -37,5 +37,10 @@ pl:
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
       wrong: 'Coś poszło nie tak...'
+  lists:
+    notifications:
+      create: 'Stworzyłeś nową listę!'
+      update: 'Aktualizowałeś listę!'
+      destroy: 'Usunąłeś listę!'
   locales:
     show: "Zmieniłeś na język %{new_language}"
