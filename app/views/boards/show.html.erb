@@ -1,5 +1,16 @@
-<%= render partial: 'new_list' %>
+<%= render partial: 'new_list', locals: {board: @board} %>
 
 <div>
   Board: <%= @board.title %>
 </div>
+
+<% @lists.each do |list| %>
+
+  <%= list.title %>
+  <%= list.id %>
+  <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
+  <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+
+<% end %>
+
+<%= link_to '< Wróć', boards_path %>

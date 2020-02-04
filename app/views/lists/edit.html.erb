@@ -1,0 +1,13 @@
+<%= form_with(model: [@board, @list], local: true) do |f| %>
+
+  <%= f.label :title, 'Nazwa listy' %>
+  <%= f.text_field :title, value: @list.title %>
+
+  <%= f.label :done, 'Zrealizowany?' %>
+  <%= f.text_field :done %>
+
+  <%= f.submit "Edytuj listę" %>
+
+<% end %>
+
+<%= link_to '< Wróć', board_path(@board) %>
