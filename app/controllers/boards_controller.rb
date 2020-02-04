@@ -9,8 +9,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    board
-    @list = board.lists.new
+    @lists = board.lists
   end
 
   def create
@@ -38,7 +37,7 @@ class BoardsController < ApplicationController
     if board.destroy
       redirect_to boards_path, notice: I18n.t('boards.notifications.destroy')
     else
-      redirect_to boards_path, alert: I18n.t('boards.notifications.wrong')
+      redirect_to boards_path, alert: I18n.t('common.notifications.wrong')
     end
   end
 

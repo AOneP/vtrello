@@ -31,11 +31,18 @@
 
 pl:
   hello: "Hej świecie"
+  common:
+    notifications:
+      wrong: 'Coś poszło nie tak...'
   boards:
     notifications:
       create: 'Stworzyłeś nowy board!'
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
-      wrong: 'Coś poszło nie tak...'
+  lists:
+    notifications:
+      create: 'Stowrzyłeś listę'
+      update: 'Aktualizowałeś listę!'
+      destroy: 'Usunąłeś listę!'
   locales:
     show: "Zmieniłeś na język %{new_language}"

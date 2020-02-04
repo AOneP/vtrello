@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_30_104638) do
+ActiveRecord::Schema.define(version: 2020_02_04_110854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,18 @@ ActiveRecord::Schema.define(version: 2020_01_30_104638) do
     t.string "title"
     t.string "describe"
     t.boolean "archived", default: false
-    t.integer "background_color"
+    t.integer "background_color", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.boolean "done", default: false
+    t.bigint "board_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_id"], name: "index_lists_on_board_id"
   end
 
 end

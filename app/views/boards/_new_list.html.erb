@@ -1,0 +1,8 @@
+<%= form_with url: board_lists_path(board), local: true do |f| %>
+
+  <%= f.label :title, 'Nazwa nowej listy' %>
+  <%= f.text_field :title, name: 'list[title]' %>
+
+  <%= f.submit 'Stwórz nową listę!' %>
+
+<% end %>
