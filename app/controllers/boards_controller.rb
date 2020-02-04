@@ -10,12 +10,13 @@ class BoardsController < ApplicationController
 
   def show
     board
+    @lists = board.lists.order(id: :ASC)
     @list = board.lists.new
   end
 
   def create
-    @board = Board.new(board_params)
-    if @board.save
+    board = Board.new(board_params)
+    if board.save
       redirect_to boards_path, notice: I18n.t('boards.notifications.create')
     else
       render :new
