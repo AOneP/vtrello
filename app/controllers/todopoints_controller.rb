@@ -14,7 +14,6 @@ class TodopointsController < ApplicationController
   end
 
   def edit
-    list
     todopoint
   end
 
@@ -41,7 +40,7 @@ class TodopointsController < ApplicationController
   end
 
   def todopoint
-    @todopoint ||= Todopoint.find(params[:id])
+    @todopoint ||= list.todopoints.find(params[:id])
   end
 
   def todopoint_params
