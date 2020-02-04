@@ -41,6 +41,10 @@ en:
     notifications:
       create: 'List created'
       update: 'List updated'
+<<<<<<< HEAD
+      destroy: 'List destroyed'
+=======
       destroy: 'List destroyed'    
+>>>>>>> 72a612f... Add List locales
   locales:
     show: "Language changed to %{new_language}"

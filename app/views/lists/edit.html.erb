@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <%= form_with(model: [@board, @list], local: true) do |f| %>
-=======
-<%= form_with model: @list do |f| %>
->>>>>>> 2231818... List CRUD
 
   <%= f.label :title, 'Nazwa listy' %>
   <%= f.text_field :title, value: @list.title %>
@@ -13,8 +9,5 @@
   <%= f.submit "Edytuj listę" %>
 
 <% end %>
-<<<<<<< HEAD
 
 <%= link_to '< Wróć', board_path(@board) %>
-=======
->>>>>>> 2231818... List CRUD

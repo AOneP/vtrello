@@ -37,10 +37,19 @@ pl:
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
       wrong: 'Coś poszło nie tak...'
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 72a612f... Add List locales
   lists:
     notifications:
       create: 'Stworzyłeś nową listę!'
       update: 'Aktualizowałeś listę!'
       destroy: 'Usunąłeś listę!'
+<<<<<<< HEAD
+=======
+>>>>>>> fc9f811... Merge with master
+=======
+>>>>>>> 72a612f... Add List locales
   locales:
     show: "Zmieniłeś na język %{new_language}"
