@@ -1,0 +1,8 @@
+<%= form_with(model: [@list, @todopoint], local: true) do |f| %>
+
+  <%= f.label :body, 'Treść ToDoPointa' %>
+  <%= f.text_field :body, value: @todopoint.body %>
+
+  <%= f.submit 'Aktualizuj ToDoPointa' %>
+
+<% end %>

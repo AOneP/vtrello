@@ -1,0 +1,8 @@
+<%= form_with url: list_todopoints_path(@list), local: true do |f| %>
+
+  <%= f.label :body, 'Dodaj ToDoPoint' %>
+  <%= f.text_field :body, name: 'todopoint[body]' %>
+
+  <%= f.submit 'Stwórz' %>
+
+<% end %>

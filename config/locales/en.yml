@@ -31,6 +31,9 @@
 
 en:
   hello: "Hello world"
+  common:
+    notifications:
+      wrong: 'Something goes wrong...'
   boards:
     notifications:
       create: 'Board succesfully created'
@@ -42,5 +45,10 @@ en:
       create: 'List created'
       update: 'List updated'
       destroy: 'List destroyed'
+  todopoints:
+    notifications:
+      create: 'Todopoint created'
+      update: 'Todopoint updated'
+      destroy: 'Todopoint destroyed'
   locales:
     show: "Language changed to %{new_language}"
