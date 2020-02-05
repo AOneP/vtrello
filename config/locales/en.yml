@@ -31,29 +31,45 @@
 
 en:
   hello: "Hello world"
-  common:
+  application:
     notifications:
-      wrong: 'Something goes wrong...'
+      authenticate: "You're not logged in!"
   boards:
     notifications:
       create: 'Board succesfully created'
       update: 'Board updated'
       destroy: 'Board destroyed'
-    wrong: 'Something goes wrong...'
-  lists:
-    notifications:
-      create: 'List created'
-      update: 'List updated'
-      destroy: 'List destroyed'
-  todopoints:
-    notifications:
-      create: 'Todopoint created'
-      update: 'Todopoint updated'
-      destroy: 'Todopoint destroyed'
+      wrong: 'Something goes wrong...'
   comments:
     notifications:
       create: 'Comment created'
       update: 'Comment updated'
       destroy: 'Comment destroyed'
+  common:
+    notifications:
+      wrong: 'Something goes wrong...'
+  lists:
+    notifications:
+      create: 'List created'
+      update: 'List updated'
+      destroy: 'List destroyed'
   locales:
     show: "Language changed to %{new_language}"
+  registrations:
+    notifications:
+      create: 'Registration successful'
+      wrong: 'Invalid email or password'
+      not_uniq: 'Nickname is taken!'
+  session:
+    notifications:
+      create: 'Logged in'
+      destroy: 'Logged out!'
+      wrong: 'Invalid email or password'
+  todopoints:
+    notifications:
+      create: 'Todopoint created'
+      update: 'Todopoint updated'
+      destroy: 'Todopoint destroyed'
+  users:
+    notifications:
+      update: 'User nickname updated!'

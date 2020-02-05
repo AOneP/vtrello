@@ -18,6 +18,11 @@
       <div class="alert alert-success"> <%= notice %>  </div>
     <% end %>
 
+    <% if current_user %>
+      <%= link_to 'Wyloguj', session_path(current_user), method: :delete %>
+      <%= link_to 'Edytuj konto', edit_user_path(current_user) %>
+    <% end %>
+
     <%= render partial: 'shared/locales' %>
     <%= yield %>
   </body>

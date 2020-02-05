@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   end
 
   resources :todopoints, only: [:show] do
-    resources :comments, oexcept: [:index, :new]
+    resources :comments, except: [:index, :new]
   end
 
   resources :locales, only: [:show], param: :locale
+
+  resources :users, only: [:show, :edit, :update]
+  resources :registrations, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 
 end

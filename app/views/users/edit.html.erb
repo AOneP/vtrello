@@ -1,0 +1,10 @@
+<%= form_with model: current_user, local: true do |f| %>
+
+  <%= f.label :nickname, value: current_user.nickname %>
+  <%= f.text_field :nickname %>
+
+  <%= f.submit 'Aktualizuj konto!' %>
+
+<% end %>
+
+<%= link_to '< Wróć', boards_path %>

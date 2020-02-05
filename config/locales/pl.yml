@@ -31,28 +31,44 @@
 
 pl:
   hello: "Hej świecie"
-  common:
+  application:
     notifications:
-      wrong: 'Coś poszło nie tak...'
+      authenticate: 'Nie jesteś zalogowany!'
   boards:
     notifications:
       create: 'Stworzyłeś nowy board!'
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
-  lists:
-    notifications:
-      create: 'Stowrzyłeś listę'
-      update: 'Aktualizowałeś listę!'
-      destroy: 'Usunąłeś listę!'
-  todopoints:
-    notifications:
-      create: 'Stworzyłeś ToDoPointa!'
-      update: 'Aktualizowałeś ToDoPointa!'
-      destroy: 'Usunąłeś ToDoPointa!'
   comments:
     notifications:
       create: 'Stworzyłeś komentarz!'
       update: 'Aktualizowałes board!'
       destroy: 'Usunąłeś komentarz!'
+  common:
+    notifications:
+      wrong: 'Coś poszło nie tak...'
+  lists:
+    notifications:
+      create: 'Stowrzyłeś listę'
+      update: 'Aktualizowałeś listę!'
+      destroy: 'Usunąłeś listę!'
   locales:
     show: "Zmieniłeś na język %{new_language}"
+  registrations:
+    notifications:
+      create: 'Zarejestrowałeś się!'
+      wrong: 'Błędny email lub hasło'
+      not_uniq: 'Nickname jest zajęty!'
+  session:
+    notifications:
+      create: 'Jesteś zalogowany!'
+      destroy: 'Wylogowano!'
+      wrong: 'Błędny email lub hasło'
+  todopoints:
+    notifications:
+      create: 'Stworzyłeś ToDoPointa!'
+      update: 'Aktualizowałeś ToDoPointa!'
+      destroy: 'Usunąłeś ToDoPointa!'
+  users:
+    notifications:
+      update: 'Aktualizowałeś nickname!'
