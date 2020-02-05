@@ -44,5 +44,10 @@ pl:
       create: 'Stowrzyłeś listę'
       update: 'Aktualizowałeś listę!'
       destroy: 'Usunąłeś listę!'
+  todopoints:
+    notifications:
+      create: 'Stworzyłeś ToDoPointa!'
+      update: 'Aktualizowałeś ToDoPointa!'
+      destroy: 'Usunąłeś ToDoPointa!'
   locales:
     show: "Zmieniłeś na język %{new_language}"

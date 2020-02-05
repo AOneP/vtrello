@@ -6,11 +6,25 @@
 
 <% @lists.each do |list| %>
 
-  <%= list.title %>
-  <%= list.id %>
-  <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
-  <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+    <div>
+      <%= list.title %>
+      <%= list.id %>
+      <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
+      <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+      <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
+    </div>
 
+    <h4>Todopoints:</h4>
+
+    <% list.todopoints.each do |todopoint| %>
+
+      <div>
+        <%= todopoint.body %>
+        <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
+        <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+      </div>
+
+    <% end %>
 <% end %>
 
 <%= link_to '< Wróć', boards_path %>

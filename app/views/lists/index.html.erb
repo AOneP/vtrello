@@ -1,6 +1,0 @@
-<% @lists.each do |list| %>
-
-  <%= list.title %>
-  <%= link_to 'Usuń', list_path(list), method: :delete, data: {confirm: 'Jesteś pewny, że chcesz usunąć listę?'} %>
-
-<% end %>

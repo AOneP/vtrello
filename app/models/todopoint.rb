@@ -1,2 +1,5 @@
 class Todopoint < ApplicationRecord
-end 
+
+  belongs_to :list
+
+end

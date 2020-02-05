@@ -1,9 +1,5 @@
 class ListsController < ApplicationController
 
-  def index
-    @lists = List.all
-  end
-
   def create
     board_list = board.lists.new(list_params)
     if board_list.save
