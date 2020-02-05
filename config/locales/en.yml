@@ -50,5 +50,10 @@ en:
       create: 'Todopoint created'
       update: 'Todopoint updated'
       destroy: 'Todopoint destroyed'
+  comments:
+    notifications:
+      create: 'Comment created'
+      update: 'Comment updated'
+      destroy: 'Comment destroyed'
   locales:
     show: "Language changed to %{new_language}"

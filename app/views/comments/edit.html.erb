@@ -1,0 +1,8 @@
+<%= form_with(model: [@todopoint, @comment], local: true) do |f| %>
+
+  <%= f.label :body, value: @comment.body %>
+  <%= f.text_field :body %>
+
+  <%= f.submit 'Aktualizuj komentarz' %>
+
+<% end %>

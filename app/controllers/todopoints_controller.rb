@@ -4,6 +4,10 @@ class TodopointsController < ApplicationController
     list
   end
 
+  def show
+    todopoint
+  end
+
   def create
     list_todopoint = list.todopoints.new(todopoint_params)
     if list_todopoint.save
