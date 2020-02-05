@@ -49,5 +49,10 @@ pl:
       create: 'Stworzyłeś ToDoPointa!'
       update: 'Aktualizowałeś ToDoPointa!'
       destroy: 'Usunąłeś ToDoPointa!'
+  comments:
+    notifications:
+      create: 'Stworzyłeś komentarz!'
+      update: 'Aktualizowałes board!'
+      destroy: 'Usunąłeś komentarz!'
   locales:
     show: "Zmieniłeś na język %{new_language}"

@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   resources :boards do
     resources :lists, except: :new
   end
+
   resources :lists, only: [:show, :new, :create] do
-    resources :todopoints, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :todopoints, except: [:index]
+  end
+
+  resources :todopoints, only: [:show] do
+    resources :comments, oexcept: [:index, :new]
   end
 
   resources :locales, only: [:show], param: :locale

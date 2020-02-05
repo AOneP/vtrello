@@ -19,7 +19,7 @@
     <% list.todopoints.each do |todopoint| %>
 
       <div>
-        <%= todopoint.body %>
+        <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
         <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
         <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
       </div>

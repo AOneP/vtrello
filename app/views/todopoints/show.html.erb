@@ -1,0 +1,19 @@
+<%= form_with url: todopoint_comments_path(@todopoint), local: true do |f| %>
+
+  <%= f.label :body, 'Dodaj komentarz' %>
+  <%= f.text_field :body, name: 'comment[body]' %>
+
+  <%= f.submit 'Stwórz' %>
+
+<% end %>
+
+
+<% @todopoint.comments.each do |comment| %>
+
+  <%= comment.body %>
+  <%= link_to 'Edytuj', edit_todopoint_comment_path(comment.todopoint, comment) %>
+  <%= link_to 'Usuń', todopoint_comment_path(comment.todopoint, comment), method: :delete, data: {confirm: 'Na pewno chcesz usunąć komentarz?' } %>
+
+<% end %>
+
+<%= link_to '< Wróć', board_path(@todopoint.list.board) %>
