@@ -1,30 +1,45 @@
 <%= render partial: 'new_list', locals: {board: @board} %>
 
+<%= link_to 'Pokaż DONE', board_path(@board, done_todopoints: !@done_todopoints) %>
+
 <div>
   Board: <%= @board.title %>
 </div>
 
 <% @lists.each do |list| %>
 
-    <div>
-      <%= list.title %>
-      <%= list.id %>
-      <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
-      <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
-      <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
-    </div>
+  <div>
+    <%= list.title %>
+    <%= list.id %>
+    <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
+    <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+    <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
+  </div>
 
-    <h4>Todopoints:</h4>
+  <h4>Todopoints:</h4>
+  <% list.todopoints.each do |todopoint| %>
 
-    <% list.todopoints.each do |todopoint| %>
+    <% if @done_todopoints && todopoint.done %>
 
+      WYKONANE:
       <div>
         <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
         <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
         <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
       </div>
 
+    <% elsif !@done_todopoints && !todopoint.done %>
+
+      NIEWYKONANE:
+      <div>
+        <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
+        <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
+        <%= render partial: 'shared/todopoint_done_button', locals: {list: list, todopoint: todopoint} %>
+        <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+      </div>
+
     <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to '< Wróć', boards_path %>

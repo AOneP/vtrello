@@ -10,6 +10,7 @@ class BoardsController < ApplicationController
 
   def show
     @lists = board.lists
+    @done_todopoints = params[:done_todopoints] == 'true'
   end
 
   def create
