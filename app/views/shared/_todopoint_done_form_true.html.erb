@@ -1,0 +1,6 @@
+<%= form_with(model: [list, todopoint], local: true) do |f| %>
+
+  <%= f.hidden_field :done, value: true %>
+  <%= f.submit 'DONE!' %>
+  
+<% end %>

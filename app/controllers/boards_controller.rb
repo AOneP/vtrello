@@ -9,8 +9,10 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = board.lists
-    @done_todopoints = params[:done_todopoints] == 'true'
+    @lists = board.lists.includes(:todopoints)
+    .where(todopoints: { done: @done_filter })
+    .references(:todopoints)
+    @done_filter = params[:filter] == 'true'
   end
 
   def create

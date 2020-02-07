@@ -1,6 +1,6 @@
 <%= render partial: 'new_list', locals: {board: @board} %>
 
-<%= link_to 'Pokaż DONE', board_path(@board, done_todopoints: !@done_todopoints) %>
+<%= link_to 'Pokaż DONE', board_path(@board, filter: !@done_filter) %>
 
 <div>
   Board: <%= @board.title %>
@@ -19,7 +19,7 @@
   <h4>Todopoints:</h4>
   <% list.todopoints.each do |todopoint| %>
 
-    <% if @done_todopoints && todopoint.done %>
+    <% if @done_filter && todopoint.done %>
 
       WYKONANE:
       <div>
@@ -28,13 +28,13 @@
         <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
       </div>
 
-    <% elsif !@done_todopoints && !todopoint.done %>
+    <% elsif !@done_filter && !todopoint.done %>
 
       NIEWYKONANE:
       <div>
         <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
         <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
-        <%= render partial: 'shared/todopoint_done_button', locals: {list: list, todopoint: todopoint} %>
+        <%= render partial: "shared/todopoint_done_form_#{@done_filter.to_s}", locals: {list: list, todopoint: todopoint} %>
         <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
       </div>
 
