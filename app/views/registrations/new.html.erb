@@ -1,0 +1,16 @@
+<%= form_with url: registrations_path, local: true do |f| %>
+
+  <%= f.label :email, 'Email:' %>
+  <%= f.email_field :email, name: 'user[email]', value: @form.email %>
+
+  <%= f.label :nickname, 'Login:' %>
+  <%= f.text_field :nickname, name: 'user[nickname]', value: @form.nickname %>
+
+  <%= f.label :password, 'Hasło:' %>
+  <%= f.password_field :password, name: 'user[password]' %>
+
+  <%= f.submit 'Zarejestruj się!' %>
+
+<% end %>
+
+<%= render partial: 'shared/form_errors', locals: {model: @form } %>
