@@ -1,30 +1,34 @@
 <%= render partial: 'new_list', locals: {board: @board} %>
 
+<%= link_to 'Pokaż DONE', board_path(@board, filter: !@done_filter) %>
+
 <div>
   Board: <%= @board.title %>
 </div>
 
 <% @lists.each do |list| %>
 
-    <div>
-      <%= list.title %>
-      <%= list.id %>
-      <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
-      <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
-      <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
-    </div>
+  <div>
+    <%= list.title %>
+    <%= list.id %>
+    <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
+    <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+    <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
+  </div>
 
-    <h4>Todopoints:</h4>
+  <h4>Todopoints:</h4>
+  <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
+  <div>
+    <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
+  </div>
+  <div>
+    <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
+    <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
+    <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
+    <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+  </div>
 
-    <% list.todopoints.each do |todopoint| %>
-
-      <div>
-        <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
-        <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
-        <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
-      </div>
-
-    <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to '< Wróć', boards_path %>

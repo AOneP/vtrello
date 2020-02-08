@@ -9,7 +9,9 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = board.lists
+    @done_filter = params[:filter] == 'true'
+    @lists = board.lists.includes(:todopoints)
+    # @lists needs improvement: n + 1
   end
 
   def create

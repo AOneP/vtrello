@@ -48,7 +48,7 @@ class TodopointsController < ApplicationController
   end
 
   def todopoint_params
-    params.require(:todopoint).permit(:body)
+    params.require(:todopoint).permit(:body, :done)
   end
 
 end

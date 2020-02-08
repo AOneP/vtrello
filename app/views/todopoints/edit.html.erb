@@ -3,6 +3,9 @@
   <%= f.label :body, 'Treść ToDoPointa' %>
   <%= f.text_field :body, value: @todopoint.body %>
 
+  <%= f.label :done, 'Wykonane?' %>
+  <%= f.select :done, [['Wykonane', true], ['Niewykonane', false]] %>
+
   <%= f.submit 'Aktualizuj ToDoPointa' %>
 
 <% end %>
