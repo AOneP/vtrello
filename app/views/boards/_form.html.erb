@@ -1,13 +1,19 @@
-<%= form_with model: @board, local: true do |f| %>
+<%- if @board_form.errors.present? %>
+  <%- @board_form.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
+<%= form_with model: @board_form.board, local: true do |f| %>
 
   <%= f.label :title, 'Tytuł' %>
-  <%= f.text_field :title, value: @board.title %><br>
+  <%= f.text_field :title, value: @board_form.board.title %><br>
 
   <%= f.label :describe, 'Opis' %>
-  <%= f.text_field :describe, value: @board.describe %><br>
+  <%= f.text_field :describe, value: @board_form.board.describe %><br>
 
   <%= f.select :background_color, options_for_select(Board.background_colors.map { |key, value| [key.capitalize, key] }) %>
 
-  <%= f.submit (@board.new_record? ? 'Stwórz nowy board' : 'Aktualizuj board') %>
+  <%= f.submit (@board_form.board.new_record? ? 'Stwórz nowy board' : 'Aktualizuj board') %>
 
 <% end %>

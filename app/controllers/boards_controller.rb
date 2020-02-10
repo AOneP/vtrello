@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new
+    @board_form = CreateBoardForm.new(current_user: current_user)
   end
 
   def show
@@ -15,8 +15,8 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
-    if @board.save
+    @board_form = CreateBoardForm.new(board_params.merge(current_user: current_user))
+    if @board_form.save
       redirect_to boards_path, notice: I18n.t('boards.notifications.create')
     else
       render :new
@@ -24,11 +24,12 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    board
+    @board_form = EditBoardForm.new(board: board)
   end
 
   def update
-    if board.update(board_params)
+    @board_form = EditBoardForm.new(board_params.merge(board: board))
+    if @board_form.save
       redirect_to boards_path, notice: I18n.t('boards.notifications.update')
     else
       render :edit
@@ -50,7 +51,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :background_color, :describe)
+    params.require(:board).permit(:title, :describe, :background_color)
   end
 
 end
