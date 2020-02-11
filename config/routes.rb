@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 
+  resources :confirmations, only: [:show, :create, :new], param: :token
+
 end

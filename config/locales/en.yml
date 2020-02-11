@@ -48,6 +48,10 @@ en:
   common:
     notifications:
       wrong: 'Something goes wrong...'
+  confirmations:
+    notifications:
+      token: 'Invalid token'
+      wrong: 'Error: ConfirmationUserEmailForm'
   lists:
     notifications:
       create: 'List created'
@@ -65,6 +69,7 @@ en:
       create: 'Logged in'
       destroy: 'Logged out!'
       wrong: 'Invalid email or password'
+      not_confirmed: 'First you need to confirm your email'
   todopoints:
     notifications:
       create: 'Todopoint created'

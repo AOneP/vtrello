@@ -47,6 +47,10 @@ pl:
   common:
     notifications:
       wrong: 'Coś poszło nie tak...'
+  confirmations:
+    notifications:
+      token: 'Niepoprawny token'
+      wrong: 'Błąd: ConfirmationUserEmailForm'
   lists:
     notifications:
       create: 'Stowrzyłeś listę'
@@ -64,6 +68,7 @@ pl:
       create: 'Jesteś zalogowany!'
       destroy: 'Wylogowano!'
       wrong: 'Błędny email lub hasło'
+      not_confirmed: 'Logowanie wymaga potwierdzenia maila!'
   todopoints:
     notifications:
       create: 'Stworzyłeś ToDoPointa!'

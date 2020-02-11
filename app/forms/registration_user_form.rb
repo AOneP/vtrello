@@ -12,9 +12,11 @@ class RegistrationUserForm
   def save
     return false unless valid?
     User.create!(user_params)
+    RegistrationUserMailer.send_mail(email).deliver!
     true
   rescue => e
     errors.add(:base, I18n.t('common.notifications.wrong'))
+    false
   end
 
   private
