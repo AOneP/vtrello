@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_002551) do
+ActiveRecord::Schema.define(version: 2020_02_11_111119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_002551) do
     t.integer "background_color", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "owner_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -40,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_02_08_002551) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_lists_on_board_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "board_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "todopoints", force: :cascade do |t|
