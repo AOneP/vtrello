@@ -39,6 +39,7 @@ pl:
       create: 'Stworzyłeś nowy board!'
       update: 'Aktualizowałeś board!'
       destroy: 'Usunąłeś board!'
+      wrong: 'Coś poszło nie tak...'
   comments:
     notifications:
       create: 'Stworzyłeś komentarz!'
@@ -58,6 +59,18 @@ pl:
       destroy: 'Usunąłeś listę!'
   locales:
     show: "Zmieniłeś na język %{new_language}"
+  password_change:
+    notifications:
+      email_sent: 'Mail z możliwością zmiany hasła został wysłany'
+      update: 'Zmieniłeś hasło!'
+      alert: 'Brak dostępu!'
+    errors:
+      token:
+        used: 'Token został już wcześniej użyty!'
+        expired: 'Minął okres ważności tokena. Powtórz procedurę'
+      password:
+        old: 'Podałeś nieprawidłowe aktualne hasło!'
+        confirmation: 'Nowe hasła nie są takie same!'
   registrations:
     notifications:
       create: 'Zarejestrowałeś się!'

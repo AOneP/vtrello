@@ -59,6 +59,18 @@ en:
       destroy: 'List destroyed'
   locales:
     show: "Language changed to %{new_language}"
+  password_change:
+    notifications:
+      email_sent: 'Check your email to change your password'
+      update: 'Password updated!'
+      alert: 'Access denied'
+    errors:
+      token:
+        used: 'Token used!'
+        expired: 'Token expired! Repeat the procedure'
+      password:
+        old: 'Wrong current password!'
+        confirmation: 'New passwords are not the same!'
   registrations:
     notifications:
       create: 'Registration successful'
