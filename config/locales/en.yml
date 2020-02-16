@@ -33,7 +33,12 @@ en:
   hello: "Hello world"
   application:
     notifications:
-      authenticate: "You're not logged in!"
+      board_invitations:
+        used: 'You are not added to invited board! Token used'
+        unknown: 'You are not added to invited board! Please contact with admin'
+        expired: 'You are not added to invited board! Token expired. Try again'
+        invalid_current_user: 'You are not added to invited board! Wrong current user'
+      authenticate: 'You are not logged in!'
   boards:
     notifications:
       create: 'Board succesfully created'
@@ -59,6 +64,17 @@ en:
       destroy: 'List destroyed'
   locales:
     show: "Language changed to %{new_language}"
+  member_invitation:
+    notifications:
+      invite_sent: 'You sent invitation to the board'
+      success: 'You are added to board'
+    wrong:
+      board_!exist: 'Board does not exist!'
+      invited_!exist: 'User does not exist!'
+      member_exist: 'You are this board member already!'
+      recipient_invitation: 'You can not invite yourself!'
+      owner_invitation: 'You can not invite the board owner!'
+      already_sent: 'Invite has already been sent! Token not used and not expired'
   password_change:
     notifications:
       email_sent: 'Check your email to change your password'
@@ -74,12 +90,15 @@ en:
   registrations:
     notifications:
       create: 'Registration successful'
+      invitation_create: 'Registration successfull and successfully added to the board'
       wrong: 'Invalid email or password'
       not_uniq: 'Nickname is taken!'
   session:
     notifications:
+      already_logged: 'You are already logged in!'
       create: 'Logged in'
       destroy: 'Logged out!'
+      invitation_create: 'You are logged in and added to board as member!'
       wrong: 'Invalid email or password'
       not_confirmed: 'First you need to confirm your email'
   todopoints:

@@ -9,6 +9,8 @@
   <%= f.label :password, 'Hasło:' %>
   <%= f.password_field :password, name: 'user[password]' %>
 
+  <%= f.hidden_field :token, { value: params['token'] } %>
+
   <%= f.submit 'Zarejestruj się!' %>
 
 <% end %>
