@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   resources :confirmations, only: [:show, :create, :new], param: :token
 
+  resource :change_passwords, only: [:update]
+  resources :change_passwords, only: [:edit, :create], param: :token_value
+
 end

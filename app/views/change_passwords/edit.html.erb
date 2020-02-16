@@ -1,0 +1,16 @@
+<%= form_with url: change_passwords_path, method: :patch, local: true do |f| %>
+
+  <%= f.label :password, 'Podaj aktualne hasło' %>
+  <%= f.password_field :password %>
+
+  <%= f.label :new_password, 'Podaj nowe hasło' %>
+  <%= f.password_field :new_password %>
+
+  <%= f.label :new_password_confirmation, 'Podaj nowe hasło' %>
+  <%= f.password_field :new_password_confirmation %>
+
+  <%= f.hidden_field :token_value, { value: params['token_value'] } %>
+
+  <%= f.submit 'Zmień hasło!' %>
+
+<% end %>
