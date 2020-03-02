@@ -10,8 +10,8 @@ class CreateBoardForm
   def save
     return false unless valid?
     ActiveRecord::Base.transaction do
-      board.save!(owner_id: current_user.id)
-      board.members.create!(user_id: current_user.id)
+      board.save!
+      board.members.create!(user: current_user)
     end
     true
   rescue => error
@@ -30,7 +30,7 @@ class CreateBoardForm
       title: title,
       describe: describe,
       background_color: background_color,
-      owner_id: current_user.id
+      owner: current_user
     }
   end
 

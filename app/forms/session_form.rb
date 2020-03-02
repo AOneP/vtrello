@@ -24,7 +24,7 @@ class SessionForm
   end
 
   def correct_credentials?
-    user.persisted? && correct_password?
+    user&.persisted? && correct_password?
   end
 
   def credentials

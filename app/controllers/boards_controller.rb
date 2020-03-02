@@ -37,11 +37,10 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    if board.destroy
-      redirect_to boards_path, notice: I18n.t('boards.notifications.destroy')
-    else
-      redirect_to boards_path, alert: I18n.t('common.notifications.wrong')
-    end
+    board.destroy!
+    redirect_to boards_path, notice: I18n.t('boards.notifications.destroy')
+  rescue => error
+    redirect_to boards_path, alert: I18n.t('common.notifications.wrong')
   end
 
   private

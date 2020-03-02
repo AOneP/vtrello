@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_111119) do
     t.integer "background_color", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "owner_id"
+    t.bigint "owner_id"
+    t.index ["owner_id"], name: "index_boards_on_owner_id"
   end
 
   create_table "comments", force: :cascade do |t|

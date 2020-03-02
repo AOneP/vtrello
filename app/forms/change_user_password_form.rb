@@ -45,5 +45,4 @@ class ChangeUserPasswordForm
     return if token.nil? || token.used? || !token.expired?
     errors.add(:token, I18n.t('password_change.errors.token.expired'))
   end
-
 end
