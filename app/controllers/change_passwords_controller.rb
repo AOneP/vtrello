@@ -12,6 +12,7 @@ class ChangePasswordsController < ApplicationController
   end
 
   def update
+
     @user_password_form = ChangeUserPasswordForm.new(password_params)
     if @user_password_form.save
       redirect_to boards_path, notice: I18n.t('password_change.notifications.update')
