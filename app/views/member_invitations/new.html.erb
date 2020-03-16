@@ -1,0 +1,12 @@
+<%- if @invitation_form.errors.present? %>
+  <%= errors_for(@invitation_form) %>
+<% end %>
+
+<%= form_with url: board_member_invitations_path(@invitation_form.board), local: true do |f| %>
+
+  <%= f.label :email, 'Podaj maila membera' %>
+  <%= f.text_field :email %>
+
+  <%= f.submit 'Dodaj!' %>
+
+<% end %>

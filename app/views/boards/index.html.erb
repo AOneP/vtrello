@@ -5,6 +5,7 @@
   <%= link_to "#{board.title}", board_path(board) %>
   <%= link_to "Usuń", board_path(board), method: :delete, data: { confirm: 'Jesteś pewny, że chcesz usunąć ten BOARD?'} %>
   <%= link_to "Edytuj", edit_board_path(board) %>
+  <%= link_to "Dodaj membera", new_board_member_invitation_path(board) %>
 
 <% end %>
 

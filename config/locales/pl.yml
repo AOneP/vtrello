@@ -33,6 +33,11 @@ pl:
   hello: "Hej świecie"
   application:
     notifications:
+      board_invitations:
+        used: 'Nie dodano do boarda! Token został już wcześniej użyty'
+        unknown: 'Nie dodano do boarda! Skontaktuj się z administratorem'
+        expired: 'Nie dodano do boarda! Token wygasł. Stwórz nowy'
+        invalid_current_user: 'Nie dodano do boarda! Błąd zalogowanego użytkownika'
       authenticate: 'Nie jesteś zalogowany!'
   boards:
     notifications:
@@ -59,6 +64,17 @@ pl:
       destroy: 'Usunąłeś listę!'
   locales:
     show: "Zmieniłeś na język %{new_language}"
+  member_invitation:
+    notifications:
+      invite_sent: 'Wysłałeś zaproszenie!'
+      success: 'Zostałeś dodany do board!'
+    wrong:
+      board_!exist: 'Board nie istnieje!'
+      invited_!exist: 'User nie istnieje!'
+      member_exist: 'Jesteś już memberem tego boarda!'
+      recipient_invitation: 'Nie możesz zaprosić siebie samego!'
+      owner_invitation: 'Nie możesz zaprosić właściciela boarda!'
+      already_sent: 'Zaproszenie zostało już wcześniej wysłane i czeka na akceptację! Token nieużyty i niewygaszony'
   password_change:
     notifications:
       email_sent: 'Mail z możliwością zmiany hasła został wysłany'
@@ -74,10 +90,12 @@ pl:
   registrations:
     notifications:
       create: 'Zarejestrowałeś się!'
+      invitation_create: 'Zarejestrowałeś się i dodano Cię do boarda'
       wrong: 'Błędny email lub hasło'
       not_uniq: 'Nickname jest zajęty!'
   session:
     notifications:
+      already_logged: 'Jesteś już zalogowany!'
       create: 'Jesteś zalogowany!'
       destroy: 'Wylogowano!'
       wrong: 'Błędny email lub hasło'

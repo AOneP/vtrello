@@ -6,9 +6,9 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @form = RegistrationUserForm.new(user_params)
+    @form = RegistrationUserForm.new(user_params.merge(token_value: params['token']))
     if @form.save
-      redirect_to new_session_path, notice: I18n.t('registrations.notifications.create')
+      redirect_to new_session_path, notice: @form.success_notice
     else
       render :new
     end
@@ -19,5 +19,4 @@ class RegistrationsController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :nickname, :password)
   end
-
 end

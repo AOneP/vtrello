@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ChangePasswordsController do
   context 'valid params' do
     let(:user) { create(:user) }
-    let(:token) { create(:token, email: user.email) }
+    let(:token) { create(:token_change_password, email: user.email) }
     let(:new_password) { 'new_password' }
     let(:params) do
       {
@@ -57,7 +57,7 @@ describe ChangePasswordsController do
 
   context 'invalid params' do
     let(:user) { create(:user) }
-    let(:token) { create(:token, email: user.email) }
+    let(:token) { create(:token_change_password, email: user.email) }
     let(:new_password) { 'new_password' }
     let(:user_password) { user.password }
     let(:params) do
@@ -111,7 +111,7 @@ describe ChangePasswordsController do
 
       context 'token' do
         context 'token email does not match with user email' do
-          let(:token) { create(:token, email: 'wrong@user.email') }
+          let(:token) { create(:token_change_password, email: 'wrong@user.email') }
 
           context 'before call' do
 

@@ -6,7 +6,7 @@ describe ConfirmationUserEmailForm do
   let(:email) { user.email }
   let(:token_boolean) { false }
   let(:created_at) { Time.now }
-  let(:token) { create(:token, email: email, used: token_boolean, created_at: created_at) }
+  let(:token) { create(:token_confirmation, email: email, used: token_boolean, created_at: created_at) }
   let(:params) do
     {
       token: token
@@ -50,12 +50,11 @@ describe ConfirmationUserEmailForm do
     end
 
     context 'invalid token expired' do
-      let(:created_at) { Time.now + 86400 + 1}
+      let(:created_at) { Time.now  - 2.days }
       it 'returnes token expired' do
         form.save
         expect(form.errors.full_messages).to include(('Expired' + ' ' + I18n.t('common.notifications.wrong')))
       end
     end
-
   end
 end

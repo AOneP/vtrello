@@ -9,7 +9,7 @@ describe ChangeUserPasswordForm do
     let(:new_password_confirmation) { 'new_password' }
     let(:token_boolean) { false }
     let(:created_at) { Time.now }
-    let(:token) { create(:token, email: user.email, used: token_boolean, created_at: created_at) }
+    let(:token) { create(:token_change_password, email: user.email, used: token_boolean, created_at: created_at) }
     let(:params) do
       {
         password: password,
@@ -46,7 +46,7 @@ describe ChangeUserPasswordForm do
       context 'token expired' do
         before { user }
         before { token }
-        let (:created_at) { Time.now + (60*60*24+1) }
+        let (:created_at) { Time.now - 2.days }
 
         it 'returnes token expired' do
           form.save
@@ -76,7 +76,6 @@ describe ChangeUserPasswordForm do
           expect(form.errors.full_messages).to include('Password' + ' ' + I18n.t('password_change.errors.password.confirmation'))
         end
       end
-
     end
   end
 end

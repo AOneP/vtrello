@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'boards#index'
   resources :boards do
     resources :lists, except: :new
+    resources :member_invitations, only: [:new, :create]
   end
 
   resources :lists, only: [:show, :new, :create] do
