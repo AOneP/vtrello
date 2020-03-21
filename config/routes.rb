@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [:show, :new, :create] do
-    resources :todopoints, except: [:index]
+    resources :todopoints, except: [:index] do
+      post :move_horizontally
+      post :move_vertically
+    end 
   end
 
   resources :todopoints, only: [:show] do

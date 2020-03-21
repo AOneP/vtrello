@@ -106,6 +106,8 @@ en:
       create: 'Todopoint created'
       update: 'Todopoint updated'
       destroy: 'Todopoint destroyed'
+    move:
+      list_does_not_exist: 'List does not exist'
   users:
     notifications:
       update: 'User nickname updated!'

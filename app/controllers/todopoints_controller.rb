@@ -31,9 +31,28 @@ class TodopointsController < ApplicationController
 
   def destroy
     if todopoint.destroy
+      refresh_todopoint_position(todopoint)
       redirect_to board_path(todopoint.list.board), notice: I18n.t('todopoints.notifications.destroy')
     else
       redirect_to board_path(todopoint.list.board), alert: I18n.t('common.notifications.wrong')
+    end
+  end
+
+  def move_vertically
+    @form = PositionAdjusterInsideList.new(list)
+    if @form.move(params[:direction].to_sym, params[:todopoint_id])
+      redirect_to board_path(list.board, edit_mode: true), notice: "#{params[:direction]}"
+    else
+      redirect_to board_path(list.board, edit_mode: true), alert: "#{@form.errors.full_messages.join}"
+    end
+  end
+
+  def move_horizontally
+    @form = TodopointMoverForm.new(move_params)
+    if @form.save
+      redirect_to board_path(@form.board, edit_mode: true), notice: "Poprawnie przeniesiono"
+    else
+      redirect_to board_path(@form.board, edit_mode: true), alert: "#{@form.errors.full_messages.join("\n")}"
     end
   end
 
@@ -47,8 +66,23 @@ class TodopointsController < ApplicationController
     @todopoint ||= list.todopoints.find(params[:id])
   end
 
-  def todopoint_params
-    params.require(:todopoint).permit(:body, :done)
+  def refresh_todopoint_position(todopoint)
+    list.todopoints.each do |el|
+      if el.position > todopoint.position
+        el.position = el.position - 1
+      end
+    end
   end
 
+  def todopoint_params
+    params.require(:todopoint).permit(:body, :done).merge(position: @list.todopoints.size + 1)
+  end
+
+  def move_params
+    {
+      list_id: params[:list_id],
+      new_list_id: params[:new_list_id],
+      todopoint_id: params[:todopoint_id],
+     }
+  end
 end

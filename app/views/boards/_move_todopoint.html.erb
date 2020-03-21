@@ -1,0 +1,10 @@
+<%- s_name = klass_name == 'right-arrow' ? '>' : '<' %>
+
+<div class=<%= klass_name %> >
+  <%= form_with url: path, local: true do |f| %>
+    <input type="hidden" name="new_list_id" value=<%= value %> >
+    <%= f.submit s_name, class: 'submit-form-arrow' do %>
+      <i class="fas fa-caret-left"></i>
+    <% end %>
+  <% end %>
+</div>

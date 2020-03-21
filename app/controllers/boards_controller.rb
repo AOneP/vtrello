@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
 
   def index
+    # poczytaj o eager load
     @boards = Board.all
   end
 
@@ -12,6 +13,7 @@ class BoardsController < ApplicationController
     @done_filter = params[:filter] == 'true'
     @lists = board.lists.includes(:todopoints)
     # @lists needs improvement: n + 1
+    @editmode = params[:edit_mode] == 'true'
   end
 
   def create

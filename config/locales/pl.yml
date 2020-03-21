@@ -98,6 +98,7 @@ pl:
       already_logged: 'Jesteś już zalogowany!'
       create: 'Jesteś zalogowany!'
       destroy: 'Wylogowano!'
+      invitation_create: 'Zalogowano i dodano do boarda!'
       wrong: 'Błędny email lub hasło'
       not_confirmed: 'Logowanie wymaga potwierdzenia maila!'
   todopoints:
@@ -105,6 +106,8 @@ pl:
       create: 'Stworzyłeś ToDoPointa!'
       update: 'Aktualizowałeś ToDoPointa!'
       destroy: 'Usunąłeś ToDoPointa!'
+    move:
+      list_does_not_exist: 'Nie ma takiej listy'
   users:
     notifications:
       update: 'Aktualizowałeś nickname!'

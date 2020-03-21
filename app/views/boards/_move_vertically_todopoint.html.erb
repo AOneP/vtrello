@@ -1,0 +1,8 @@
+<%- s_name = klass_name == 'up-arrow' ? '^' : 'v' %>
+
+<div class=<%= klass_name %> >
+  <%= form_with url: path, local: true do |f| %>
+    <input type="hidden" name="direction" value=<%= value %> >
+    <%= f.submit s_name, class: 'submit-form-arrow-updown' %>
+  <% end %>
+</div>
