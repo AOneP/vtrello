@@ -31,27 +31,27 @@
 
       <div class="left-right">
         <% if @editmode && index != 0 %>
-          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_horizontally_path(list, todopoint), value: @lists[index - 1].id, klass_name: 'left-arrow' } %>
+          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_todopoint_movement_service_path(list, todopoint), value: @lists[index - 1].id, klass_name: 'left-arrow' } %>
         <% end %>
 
         <% if @editmode && ((index + 1) != @lists.size) %>
-          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_horizontally_path(list, todopoint), value: @lists[index + 1].id, klass_name: 'right-arrow' } %>
+          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_todopoint_movement_service_path(list, todopoint), value: @lists[index + 1].id, klass_name: 'right-arrow' } %>
         <% end %>
       </div>
 
       <div class="up-down">
         <% if @editmode && todopoint.position > 1 %>
-          <%= render partial: 'move_vertically_todopoint', locals: { path: list_todopoint_move_vertically_path(list, todopoint), value: :up, klass_name: 'up-arrow' } %>
+          <%= render partial: 'move_vertically_todopoint', locals: { path: list_todopoint_todopoint_movement_service_path(list, todopoint), value: :up, klass_name: 'up-arrow' } %>
         <% end %>
 
         <% if @editmode && ((todopoint.position + 1) <= list.todopoints.size) %>
-          <%= render partial: 'move_vertically_todopoint', locals: { path: list_todopoint_move_vertically_path(list, todopoint), value: :down, klass_name: 'down-arrow' } %>
+          <%= render partial: 'move_vertically_todopoint', locals: { path: list_todopoint_todopoint_movement_service_path(list, todopoint), value: :down, klass_name: 'down-arrow' } %>
         <% end %>
       </div>
 
       <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
       <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
-      <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+      <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDoPointa?'} %>
     </div>
 
     <% end %>

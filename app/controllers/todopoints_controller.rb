@@ -31,10 +31,18 @@ class TodopointsController < ApplicationController
 
   def destroy
     if todopoint.destroy
-      refresh_todopoint_position(todopoint)
+      resort_todopoint_position(todopoint)
       redirect_to board_path(todopoint.list.board), notice: I18n.t('todopoints.notifications.destroy')
     else
       redirect_to board_path(todopoint.list.board), alert: I18n.t('common.notifications.wrong')
+    end
+  end
+
+  def todopoint_movement_service
+    if TodopointMovementService.new(params) == true
+      redirect_to board_path(List.find(params['list_id']).board), notice: 'Ok'
+    else
+      redirect_to board_path(List.find(params['list_id']).board), alert: 'Źle'
     end
   end
 
@@ -48,9 +56,9 @@ class TodopointsController < ApplicationController
   end
 
   def move_horizontally
-    @form = TodopointMoverForm.new(move_params)
+    @form = TodopointMoverForm.new(list_id: params[:list_id], new_list_id: params[:new_list_id], todopoint_id: params[:todopoint_id])
     if @form.save
-      redirect_to board_path(@form.board, edit_mode: true), notice: "Poprawnie przeniesiono"
+      redirect_to board_path(@form.board, edit_mode: true), notice: I18n.t('todopoints.move.moved_correctly')
     else
       redirect_to board_path(@form.board, edit_mode: true), alert: "#{@form.errors.full_messages.join("\n")}"
     end
@@ -66,7 +74,7 @@ class TodopointsController < ApplicationController
     @todopoint ||= list.todopoints.find(params[:id])
   end
 
-  def refresh_todopoint_position(todopoint)
+  def resort_todopoint_position(todopoint)
     list.todopoints.each do |el|
       if el.position > todopoint.position
         el.position = el.position - 1

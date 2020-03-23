@@ -107,6 +107,7 @@ en:
       update: 'Todopoint updated'
       destroy: 'Todopoint destroyed'
     move:
+      moved_correctly: 'Moved correctly'
       list_does_not_exist: 'List does not exist'
   users:
     notifications:

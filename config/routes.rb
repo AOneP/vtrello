@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :todopoints, except: [:index] do
       post :move_horizontally
       post :move_vertically
-    end 
+      post :todopoint_movement_service
+    end
   end
 
   resources :todopoints, only: [:show] do

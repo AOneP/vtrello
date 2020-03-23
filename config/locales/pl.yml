@@ -107,6 +107,7 @@ pl:
       update: 'Aktualizowałeś ToDoPointa!'
       destroy: 'Usunąłeś ToDoPointa!'
     move:
+      moved_correctly: 'Poprawnie przeniesiono'
       list_does_not_exist: 'Nie ma takiej listy'
   users:
     notifications:

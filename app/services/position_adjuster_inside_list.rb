@@ -19,12 +19,12 @@ class PositionAdjusterInsideList
   end
 
   def move_up(todo_id)
-    todo_which_i_want_to_move_up = collection.find_by(id: todo_id)
+    todo_which_i_want_to_move_up = collection.find(todo_id)
     if todo_which_i_want_to_move_up.position == 1
       return
     else
       todo_which_i_want_to_move_down = collection.find do |todopoint|
-        todopoint.position == (todo_which_i_want_to_move_up.position - 1)
+        todopoint.position == todo_which_i_want_to_move_up.position - 1
       end
 
       todo_which_i_want_to_move_up.update(position: todo_which_i_want_to_move_up.position - 1)
@@ -40,7 +40,7 @@ class PositionAdjusterInsideList
       return
     end
     todo_which_i_want_to_move_up = collection.find do |todopoint|
-      todopoint.position == (todo_which_i_want_to_move_down.position + 1)
+      todopoint.position == todo_which_i_want_to_move_down.position + 1
     end
 
     todo_which_i_want_to_move_down.update(position: todo_which_i_want_to_move_down.position + 1)
