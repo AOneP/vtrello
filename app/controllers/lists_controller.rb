@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def create
-    board_list = board.lists.new(list_params)
+    board_list = board.lists.new(list_params.merge(position: board.lists.count + 1))
     if board_list.save
       redirect_to board_path(board), notice: I18n.t('lists.notifications.create')
     else

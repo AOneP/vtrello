@@ -37,6 +37,19 @@ class TodopointsController < ApplicationController
     end
   end
 
+  def move_todopoint
+    @service = TodoMovementService.new(params['todopoint_id'], params['list_id'], params['new_list_id'])
+    if params['direction'] == 'right'
+      if @service.move_right
+        redirect_to board_path(list.board), notice: 'OK :D'
+      end
+    elsif params['direction'] == 'left'
+      if @service.move_left
+        redirect_to board_path(list.board), notice: 'OK :D'
+      end
+    end
+  end
+
   private
 
   def list

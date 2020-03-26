@@ -6,29 +6,40 @@
   Board: <%= @board.title %>
 </div>
 
-<% @lists.each do |list| %>
+<% @lists.each_with_index do |list, index| %>
 
-  <div>
-    <%= list.title %>
-    <%= list.id %>
-    <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
-    <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
-    <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
-  </div>
+  <div style="border: 1px solid black; margin-top: 10px;">
 
-  <h4>Todopoints:</h4>
-  <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
-  <div>
-    <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
-  </div>
-  <div>
-    <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
-    <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
-    <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
-    <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
-  </div>
+    <div>
+      <%= list.title %>
+      <%= list.id %>
+      <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
+      <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+      <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
 
-  <% end %>
+      <h4>Todopoints:</h4>
+      <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
+      <div>
+        <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
+      </div>
+      <div>
+        <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
+
+        <% @service = TodoMovementService.new(todopoint.id) %>
+        <% if @service.can_i_move_right? %>
+          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_todopoint_path(list, todopoint), value: @lists[index + 1]&.id, klass_name: 'right-arrow', direction: 'right' } %>
+        <% end %>
+        <% if @service.can_i_move_left? %>
+          <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_todopoint_path(list, todopoint), value: @lists[index - 1]&.id, klass_name: 'left-arrow', direction: 'left' } %>
+        <% end %>
+      </div>
+      <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
+      <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
+      <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+      <% end %>
+    </div>
+</div>
+
 <% end %>
 
 <%= link_to '< Wróć', boards_path %>
