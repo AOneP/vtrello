@@ -109,8 +109,3 @@ class TodoPointMoverLeft
     @board ||= list.board
   end
 end
-
-
-#
-# todo_point = TodoPoint.last
-# TodoPointMoverRight.move(todo_point)

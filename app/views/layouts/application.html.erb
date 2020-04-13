@@ -15,7 +15,9 @@
     <% end %>
 
     <% if notice.present? %>
-      <div class="alert alert-success"> <%= notice %>  </div>
+      <div class="alert">
+        <%= notice %>
+      </div>
     <% end %>
 
     <% if current_user %>

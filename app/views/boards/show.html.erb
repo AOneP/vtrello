@@ -8,9 +8,9 @@
 
 <% @lists.each_with_index do |list, index| %>
 
-  <div style="border: 1px solid black; margin-top: 10px;">
+  <div class="main-container">
 
-    <div>
+    <div class="list-container">
       <%= list.title %>
       <%= list.id %>
       <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>

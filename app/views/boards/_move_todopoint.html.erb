@@ -1,7 +1,7 @@
 <%- s_name = klass_name == 'right-arrow' ? '>' : '<' %>
 
   <%= form_with url: path, local: true do |f| %>
-    <input type="hidden" name="new_list_id" value=<%= value %> >
-    <input type="hidden" name="direction" value=<%= direction %> >
+    <%= f.hidden_field :new_list_id, { value: value } %>
+    <%= f.hidden_field :direction, { value: direction } %>
     <%= f.submit s_name, class: 'submit-form-arrow' %>
   <% end %>
