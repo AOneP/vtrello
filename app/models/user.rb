@@ -12,5 +12,4 @@ class User < ApplicationRecord
   def confirmed?
     confirmed_at.present?
   end
-
 end

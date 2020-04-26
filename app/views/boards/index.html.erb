@@ -1,12 +1,92 @@
-<%= link_to 'Nowy board', new_board_path %>
+<div class="create-board-container">
+  <div class="div-button">
+    <%= link_to "Create new board", new_board_path, class: "button" %>
+  </div>
+</div>
 
-<% @boards.each do |board| %>
+<div class="board-type">
+  <i class="fas fa-crown"></i> Moje Boardy
+</div>
 
-  <%= link_to "#{board.title}", board_path(board) %>
-  <%= link_to "Usuń", board_path(board), method: :delete, data: { confirm: 'Jesteś pewny, że chcesz usunąć ten BOARD?'} %>
-  <%= link_to "Edytuj", edit_board_path(board) %>
-  <%= link_to "Dodaj membera", new_board_member_invitation_path(board) %>
+<div class="boards-container">
 
+<% @own_boards.each do |b| %>
+  <% if !b.archived %>
+    <div class="card text-white mb-3 margin" style="max-width: 18rem;background-color:<%= b.mapped_background_color %>;">
+      <div class="card-header">
+        <div class="card-title">
+          <%= link_to "#{b.title}", board_path(b.id), class: "white" %>
+        </div>
+        <div class="card-title-icons">
+          <div class="ellipsis">
+            <%= link_to edit_board_path(b.id), class: 'a-edit' do %>
+              <i class="fas fa-ellipsis-v"></i>
+            <% end %>
+          </div>
+          <div class="x-div">
+            <%= link_to board_path(b.id), method: :delete,
+            data: { confirm: 'Are you sure you want to delete this board?'},
+            style: 'color:#FFFFFF;', class: "x-a" do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <%= b.describe %>
+        </div>
+        <div class="card-text-icons">
+          <div class="card-text-icons-right">
+            <div class="card-add-member">
+              <%= link_to new_board_member_invitation_path(b) do %>
+              <i class="fas fa-user-plus"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+</div>
 
-<%= link_to '< WRÓĆ', root_path %>
+<div class="board-type">
+  <i class="fas fa-users"></i> Member boards (css grid)
+</div>
+
+
+<div class="member-boards-container">
+  <% @boards_as_member.each do |b| %>
+    <% if b.archived == false %>
+    <div class="container-boards" style="max-width: 18rem;background-color:<%= b.mapped_background_color %>;">
+      <div class="card-title-grid">
+        <%= link_to "#{b.title}", board_path(b.id), class: "white" %>
+      </div>
+      <div class="card-describe-grid">
+        <div class="describe-text-grid">
+          <%= b.describe %>
+        </div>
+      </div>
+      <div class="card-ellipsis-grid">
+        <%= link_to edit_board_path(b.id), class: 'a-edit' do %>
+          <i class="fas fa-ellipsis-v"></i>
+        <% end %>
+      </div>
+      <div class="card-x-div-grid">
+        <%= link_to board_path(b.id), method: :delete,
+        data: { confirm: 'Are you sure you want to delete this board?'},
+        style: 'color:#FFFFFF;', class: "x-a" do %>
+          <i class="fas fa-times"></i>
+        <%# zmienić to wyzej %>
+        <% end %>
+      </div>
+      <div class="card-add-member-grid">
+        <%= link_to new_board_member_invitation_path(b) do %>
+          <i class="fas fa-user-plus"></i>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
