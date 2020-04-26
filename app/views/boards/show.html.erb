@@ -6,29 +6,39 @@
   Board: <%= @board.title %>
 </div>
 
-<% @lists.each do |list| %>
-
-  <div>
-    <%= list.title %>
-    <%= list.id %>
-    <%= link_to 'Edytuj', edit_board_list_path(list.board, list) %>
-    <%= link_to 'Usuń', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
-    <%= link_to 'Dodaj ToDoPoint', new_list_todopoint_path(list) %>
-  </div>
-
-  <h4>Todopoints:</h4>
-  <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
-  <div>
-    <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
-  </div>
-  <div>
-    <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
-    <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
-    <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
-    <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
-  </div>
-
+<div class="lists-container">
+  <% @lists.each do |list| %>
+    <div class="list-container">
+      <div class="list-title">
+        <%= list.title %>
+      </div>
+      <div class="remove-list">
+        <%= link_to 'X', board_list_path(list.board, list), method: :delete, data: {confirm: 'Na pewno chcesz usunąć listę?'} %>
+      </div>
+      <div class="todos-container">
+        <h4>Todopoints:</h4>
+        <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
+          <div class="todo-container">
+            <div>
+              <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
+            </div>
+            <div class="todo-body">
+              <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
+            </div>
+            <div class="todo-actions">
+              <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>
+              <%= render partial: "shared/todopoint_done_form_#{!@done_filter}", locals: {list: list, todopoint: todopoint} %>
+              <%= link_to 'Usuń', list_todopoint_path(list, todopoint), method: :delete, data: {confirm: 'Na pewno chcesz usunąć ToDiPointa?'} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="list-actions">
+        <%= link_to 'Edytuj listę', edit_board_list_path(list.board, list) %>
+        <%= link_to '+', new_list_todopoint_path(list) %>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>
 
 <%= link_to '< Wróć', boards_path %>

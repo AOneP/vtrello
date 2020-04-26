@@ -95,7 +95,7 @@ class InvitationCreateForm
   end
 
   def invited_user_is_already_a_member?
-    return unless invited_user&.boards&.find_by(id: board_id).present?
+    return unless invited_user&.own_boards&.find_by(id: board_id).present?
     errors.add(:base, I18n.t('member_invitation.wrong.member_exist'))
   end
 
@@ -106,7 +106,7 @@ class InvitationCreateForm
 
   def invite_already_sent
     return if token.nil?
-    return if token&.used? && !token&.expired?
+    return if !token&.used? && !token&.expired?
     errors.add(:base, I18n.t('member_invitation.wrong.already_sent'))
   end
 
