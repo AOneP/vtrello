@@ -7,7 +7,7 @@
 </div>
 
 <div class="lists-container">
-  <% @lists.each do |list| %>
+  <% @lists.each_with_index do |list, index| %>
     <div class="list-container">
       <div class="list-title">
         <%= list.title %>
@@ -18,12 +18,19 @@
       <div class="todos-container">
         <h4>Todopoints:</h4>
         <% list.todopoints.where(todopoints: { done: @done_filter}).each do |todopoint| %>
+        <% todo_extended = todopoint.extend(TodopointMover) %>
           <div class="todo-container">
             <div>
               <%= @done_filter ? 'Wykonane' : 'Niewykonane' %>
             </div>
             <div class="todo-body">
               <%= link_to "#{todopoint.body}", list_todopoint_path(list, todopoint) %>
+              <% if todopoint.can_i_move_right? %>
+                <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_todopoint_path(list, todopoint), value: @lists[index + 1]&.id, klass_name: 'right-arrow', direction: 'right' } %>
+              <% end %>
+              <% if todopoint.can_i_move_left? %>
+                <%= render partial: 'move_todopoint', locals: { path: list_todopoint_move_todopoint_path(list, todopoint), value: @lists[index - 1]&.id, klass_name: 'left-arrow', direction: 'left' } %>
+              <% end %>
             </div>
             <div class="todo-actions">
               <%= link_to 'Edytuj', edit_list_todopoint_path(list, todopoint) %>

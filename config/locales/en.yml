@@ -44,7 +44,7 @@ en:
       create: 'Board succesfully created'
       update: 'Board updated'
       destroy: 'Board destroyed'
-      wrong: 'Something goes wrong...'
+      wrong: 'Something went wrong...'
   comments:
     notifications:
       create: 'Comment created'
@@ -52,7 +52,7 @@ en:
       destroy: 'Comment destroyed'
   common:
     notifications:
-      wrong: 'Something goes wrong...'
+      wrong: 'Something went wrong...'
   confirmations:
     notifications:
       token: 'Invalid token'

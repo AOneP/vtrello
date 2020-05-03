@@ -53,8 +53,13 @@ class InvitationCreateForm
 
   def save
     return false unless valid?
-    InvitationToBoardMailer.send_mail_invite_existing_user(email, board_id).deliver!
+    token = Token::Invitation.create!(email: email, target_id: board_id)
+    InvitationToBoardMailer.send_mail_invite_existing_user(email, board_id, token).deliver!
     true
+  rescue => error
+    token.destroy
+    error.add(:base, 'Something went wrong...')
+    false
   end
 
   def board
@@ -124,7 +129,12 @@ class InvitationCreateFormNewUser
 
   def save
     return false unless valid?
-    InvitationToBoardMailer.send_mail_invite_new_user(email, board_id).deliver!
+    token = Token::Invitation.create!(email: email, target_id: board_id)
+    InvitationToBoardMailer.send_mail_invite_new_user(email, board_id, token).deliver!
     true
+  rescue => error
+    token.destroy
+    error.add(:base, 'Something went wrong...')
+    false
   end
 end

@@ -37,6 +37,15 @@ class TodopointsController < ApplicationController
     end
   end
 
+  def move_todopoint
+    @service = MoverPicker.service(todopoint, params['direction'])
+    if @service.move
+      redirect_to board_path(@service.board), notice: 'OK'
+    else
+      redirect_to board_path(@service.board), alert: "Can't move there"
+    end
+  end
+
   private
 
   def list
@@ -44,11 +53,10 @@ class TodopointsController < ApplicationController
   end
 
   def todopoint
-    @todopoint ||= list.todopoints.find(params[:id])
+    @todopoint ||= list.todopoints.find(params[:todopoint_id] || params[:id])
   end
 
   def todopoint_params
     params.require(:todopoint).permit(:body, :done)
   end
-
 end
