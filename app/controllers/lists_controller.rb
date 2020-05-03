@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :done)
+    params.require(:list).permit(:title, :done).merge(position: board.lists.count + 1)
   end
 
 end

@@ -53,8 +53,13 @@ class InvitationCreateForm
 
   def save
     return false unless valid?
-    InvitationToBoardMailer.send_mail_invite_existing_user(email, board_id).deliver!
+    token = Token::Invitation.create!(email: email, target_id: board_id)
+    InvitationToBoardMailer.send_mail_invite_existing_user(email, board_id, token).deliver!
     true
+  rescue => error
+    token.destroy
+    error.add(:base, 'Something went wrong...')
+    false
   end
 
   def board
@@ -95,7 +100,7 @@ class InvitationCreateForm
   end
 
   def invited_user_is_already_a_member?
-    return unless invited_user&.boards&.find_by(id: board_id).present?
+    return unless invited_user&.own_boards&.find_by(id: board_id).present?
     errors.add(:base, I18n.t('member_invitation.wrong.member_exist'))
   end
 
@@ -106,7 +111,7 @@ class InvitationCreateForm
 
   def invite_already_sent
     return if token.nil?
-    return if token&.used? && !token&.expired?
+    return if !token&.used? && !token&.expired?
     errors.add(:base, I18n.t('member_invitation.wrong.already_sent'))
   end
 
@@ -124,7 +129,12 @@ class InvitationCreateFormNewUser
 
   def save
     return false unless valid?
-    InvitationToBoardMailer.send_mail_invite_new_user(email, board_id).deliver!
+    token = Token::Invitation.create!(email: email, target_id: board_id)
+    InvitationToBoardMailer.send_mail_invite_new_user(email, board_id, token).deliver!
     true
+  rescue => error
+    token.destroy
+    error.add(:base, 'Something went wrong...')
+    false
   end
 end

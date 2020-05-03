@@ -37,21 +37,8 @@ class TodopointsController < ApplicationController
     end
   end
 
-  # def move_todopoint
-  #   @service = TodoMovementService.new(params['todopoint_id'], params['list_id'], params['new_list_id'])
-  #   if params['direction'] == 'right'
-  #     if @service.move_right
-  #       redirect_to board_path(list.board), notice: 'OK :D'
-  #     end
-  #   elsif params['direction'] == 'left'
-  #     if @service.move_left
-  #       redirect_to board_path(list.board), notice: 'OK :D'
-  #     end
-  #   end
-  # end
-
   def move_todopoint
-    @service = MoverPicker.service(params)
+    @service = MoverPicker.service(todopoint, params['direction'])
     if @service.move
       redirect_to board_path(@service.board), notice: 'OK'
     else
@@ -66,7 +53,7 @@ class TodopointsController < ApplicationController
   end
 
   def todopoint
-    @todopoint ||= list.todopoints.find(params[:id])
+    @todopoint ||= list.todopoints.find(params[:todopoint_id] || params[:id])
   end
 
   def todopoint_params

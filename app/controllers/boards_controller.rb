@@ -2,6 +2,8 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    @own_boards = current_user.own_boards
+    @boards_as_member = current_user.boards_as_member
   end
 
   def new
@@ -52,5 +54,4 @@ class BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:title, :describe, :background_color)
   end
-
 end

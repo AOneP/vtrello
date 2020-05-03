@@ -8,7 +8,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 require 'rspec/rails'
-require 'rspec/rails'
 require 'factory_bot_rails'
 require 'factory_bot'
 

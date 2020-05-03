@@ -12,14 +12,6 @@ class TodoMovementService
     left_mover.can_i_move?
   end
 
-  def move_right
-    right_mover.move
-  end
-
-  def move_left
-    left_mover.move
-  end
-
   private
 
   def right_mover
@@ -48,6 +40,10 @@ class TodoPointMoverRight
     !board_has_less_than_two_lists? && !todo_inside_last_list_on_the_right?
   end
 
+  def board
+    @board ||= list.board
+  end
+
   private
 
   def list_where_we_want_to_move_our_todo_point
@@ -64,10 +60,6 @@ class TodoPointMoverRight
 
   def list
     @list ||= @todo_point.list
-  end
-
-  def board
-    @board ||= list.board
   end
 end
 
@@ -87,6 +79,10 @@ class TodoPointMoverLeft
     !board_has_less_than_two_lists? && !todo_inside_last_list_on_the_left?
   end
 
+  def board
+    @board ||= list.board
+  end
+
   private
 
   def list_where_we_want_to_move_our_todo_point
@@ -103,9 +99,5 @@ class TodoPointMoverLeft
 
   def list
     @list ||= @todo_point.list
-  end
-
-  def board
-    @board ||= list.board
   end
 end

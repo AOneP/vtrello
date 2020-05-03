@@ -1,8 +1,8 @@
 class MoverPicker
 
-  def self.service(params)
-    # can_i_move in boards/show
-    # action .move
+  def self.service(todopoint, direction)
+    return TodoPointMoverRight.new(todopoint) if direction == 'right'
+    return TodoPointMoverLeft.new(todopoint) if direction == 'left'
+    fail 'invalid direction'
   end
-
 end
